@@ -1,3 +1,3 @@
-# todo_app
+# Flutter Todo List
 
-A new Flutter project.
+Yet another todo list app to learn a new technology 😂
