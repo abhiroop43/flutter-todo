@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
+import 'package:todo_app/pages/todo/todocreate.dart';
 
 import '../../components/datalist.dart';
 
@@ -21,7 +22,10 @@ class TodoList extends StatelessWidget {
           children: [
             ElevatedButton.icon(
               onPressed: () {
-                // Add your button action here
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TodoCreate()));
               },
               icon: const Icon(Icons.add),
               label: const Text('New Task'),
