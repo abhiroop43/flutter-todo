@@ -1,25 +1,27 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/pages/todo/tododetails.dart';
+
+import '../models/todo.dart';
 
 class ListItem extends StatelessWidget {
-  final int id;
-  final String title;
-  final String subtitle;
+  final Todo todo;
 
-  const ListItem(
-      {super.key,
-      required this.id,
-      required this.title,
-      required this.subtitle});
+  const ListItem({super.key, required this.todo});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      key: Key(id.toString()),
+      key: Key(todo.id.toString()),
       title: ElevatedButton(
         onPressed: () {
-          log('$id pressed');
+          log('${todo.id} pressed');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      TodoDetails(key: Key(todo.id.toString()), todo: todo)));
         },
         style: ButtonStyle(
           alignment: Alignment.centerLeft,
@@ -29,7 +31,7 @@ class ListItem extends StatelessWidget {
         child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              title,
+              todo.taskName,
               style: Theme.of(context).textTheme.headlineSmall,
             )),
       ),

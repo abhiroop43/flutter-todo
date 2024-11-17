@@ -21,7 +21,11 @@ class MainApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         ),
-        home: Scaffold(body: TodoList()),
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text('Things To Do'),
+            ),
+            body: TodoList()),
       ),
     );
   }

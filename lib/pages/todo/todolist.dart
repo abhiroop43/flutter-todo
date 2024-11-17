@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/components/listitem.dart';
 import 'package:todo_app/models/todo.dart';
+
+import '../../components/datalist.dart';
 
 class TodoList extends StatelessWidget {
   final List<Todo> todos = [
@@ -13,24 +14,24 @@ class TodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return ListView.builder(
-    //   itemCount: todos.length,
-    //   itemBuilder: (context, index) {
-    //     return ListTile(
-    //       title: Text(todos[index].taskName),
-    //       tileColor: Theme.of(context).colorScheme.primary,
-    //       textColor: Theme.of(context).colorScheme.onPrimary,
-    //       // subtitle: Text(todos[index].taskDescription),
-    //     );
-    //   },
-    // );
-
-    return ListView.builder(
-      itemCount: todos.length,
-      itemBuilder: (context, index) {
-        final item = todos[index];
-        return ListItem(id: item.id, title: item.taskName, subtitle: '');
-      },
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton.icon(
+              onPressed: () {
+                // Add your button action here
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('New Task'),
+            ),
+          ],
+        ),
+        Expanded(
+          child: DataList(todos: todos),
+        ),
+      ],
     );
   }
 }
